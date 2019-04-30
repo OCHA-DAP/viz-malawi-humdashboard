@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Malawi: 2019 Humanitarian Flood Response Dashboard</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+
+   <link href="style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container" width:75%; margin: 0 auto;>
+
+
+    <!-- HEADER -->
+    <div id="blockhead" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <h3 class="my-0 mr-md-auto font-weight-bold">Malawi: 2019 Humanitarian Flood Response Dashboard</h3>
+      <div class="col-2 blockmaptop" style="border-right:0px">
+        <font class="blockmaptop_title">
+        </font>
+    </div>
+    </div>
+    <!-- END HEADER -->
+
+    <!-- START Page Content -->
+    <div class="container-fluid" id='maincontainer'>
+    <div class="row">
+      <div class="col-md-12 apanel">
+          <div class="row">
+              <div class="row blockrow">
+                  <div class="col-md-12" style="text-align: left;">
+                      <p class="pmap">The visualisation shows the status of ongoing humanitarian flood response in Malawi. The data is based on response by partners and government. The Visualisation shows Sector activities at district level.</p>
+                      <br/> 
+                  </div>
+                  <div class="col-md-12">
+                      <table class="col-md-12 apanel">
+                          <tr>
+                              <td class="tdtit">
+                                  <h4>Key Figure</h4>
+                              </td>
+                          </tr>
+                      </table>
+                      </br>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="row">
+                          <div class="col-md-3">
+                              <table class="kf">
+                                  <tr>
+                                      <td class="kf-tit" style="background:#2E75BA; padding:20px">Affected</td>
+                                      <td class="kf-val" style="background:#EC645B;opacity:0.8" id="kf1"></td>
+                                  </tr>
+                              </table>
+                          </div>
+                          <div class="col-md-3">
+                              <table class="kf">
+                                  <tr>
+                                      <td class="kf-tit" style="background:#2E75BA; padding:20px">Targeted</td>
+                                      <td class="kf-val" style="background:#EC645B; opacity:0.8" id="kf2"></td>
+                                  </tr>
+                              </table>
+                          </div>
+                          <div class="col-md-3">
+                              <table class="kf">
+                                  <tr>
+                                      <td class="kf-tit" style="background:#2E75BA; padding:20px">Reached</td>
+                                      <td class="kf-val" style="background:#EC645B;opacity:0.8" id="kf3"></td>
+                                  </tr>
+                              </table>
+                          </div>
+                          <div class="col-md-3">
+                              <table class="kf">
+                                  <tr>
+                                      <td class="kf-tit" style="background:#2E75BA; padding:20px">Number of Partners</td>
+                                      <td class="kf-val" style="background:#EC645B;opacity:0.8" id="kf4"></td>
+                                  </tr>
+                              </table>
+                              </br>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-12 apanel">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div id='regions_div'></div>
+                          </div>
+                          <div class="col-md-6">
+                              <div class="row">
+                                  <div class="col-md-12" style="margin-top: 1rem">
+                                      <div class="col-md-12 paneltitle2"> <font class="panelTitleLight"><font class="panelTitleBold" ># of people targeted and reached by cluster</font> </div>
+                                      <div id="dual_x_div" style="width: 200px; height: 700px;"></div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-12">
+                          <div class="col-md-12 paneltitle" style="margin-top: 1rem"> <font class="panelTitleBold"># Partners by Clusters</font> </div>
+                          <div id="iStack"></div>
+                      </div>
+                      <footer>
+                          <div style="font-size: 12px; padding-right: 30px; padding-top: 10px">
+                              <table style="float: left;">
+                                  <tr>
+                                      <td>Powered by &nbsp;</td>
+                                      <td>
+                                          <a target="_blank" href="https://data.humdata.org"> <img style="height: 17px" class="img-responsive hdx" src='images/HDX-logo-home.svg'> </a>
+                                      </td>
+                                  </tr>
+                              </table>
+                          </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <br/>
+      <br/>
+
+    <!-- JAVASCRIPT LIBRARY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
+
+
+   <script type="text/javascript">
+
+      // INITIAL VARIABLE
+      var datacsv1 = 0;
+      var datacsv2 = 0;
+      var geojson;
+      var reachedData = [];
+      var map = L.map('regions_div', { //map is a global variable
+          center: [-13.317717417490629, 34.27725791931153],
+          zoom: 7,
+          zoomDelta: 0.5,
+          zoomSnap: 0,
+          zoomControl: false,
+          layerControl:false,
+          attributionControl: true,
+          minZoom: 7,
+          maxZoom: 19,
+      });
+      var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+
+      });
+      var humanNumber = d3.format(',d');
+      var cluster = d3.scale.linear()
+          .domain([4000, 80000])
+          .range([2, 30]);
+
+      CartoDB_Positron.addTo(map);
+
+
+
+      function putKeyFigure(){
+          var kolom_affected = 0;
+          var kolom_target = 0;
+          var kolom_reach = 0;
+          datacsv2.forEach(function(row){
+             kolom_affected = kolom_affected + parseInt(row['affected_15Mar']);
+             kolom_target = kolom_target + parseInt(row['targeted']);
+             kolom_reach = kolom_reach + parseInt(row['reached_30Mar']);
+             reachedData[row['District']] = parseInt(row['targeted']);
+
+          })
+          $('#kf1').html(humanNumber(kolom_affected));
+          $('#kf2').html(humanNumber(kolom_target));
+          $('#kf3').html(humanNumber(kolom_reach));
+
+          var kolom_partners = 0;
+          datacsv1.forEach(function(row){
+             kolom_partners = kolom_partners + parseInt(row['#partners']);
+          })
+          $('#kf4').html(humanNumber(kolom_partners));
+      }
+
+
+    //___________________________________________________________________________________________________________________
+
+      function draw_BarChart(){
+          var databar = [ ['Sector','Targeted','Reached'] ];
+          datacsv1.forEach(function(row){
+            databar.push( [row['Cluster'],parseInt(row['#people_targeted']),parseInt(row['people_reached_12Apr'])] );
+           
+          })
+
+          google.charts.load('current', {'packages':['bar']});
+          google.charts.setOnLoadCallback(drawStuff);
+
+          function drawStuff() {
+            var data = new google.visualization.arrayToDataTable(databar);
+            var options = {
+              legend: { position: 'none'},
+              width: 540,
+              colors: ['#2E75BA', '#EF847C'],
+              bars: 'horizontal', // Required for Material Bar Charts.
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('dual_x_div'));
+            chart.draw(data, options);
+          };
+      }
+
+    //___________________________________________________________________________________________________________________
+
+      function draw_StackChart(){
+          var datastack = [['partners'],['partners']];
+          datacsv1.forEach(function(row){
+            datastack[0].push(row['Cluster']);
+            datastack[1].push(parseInt(row['#partners']));
+
+          })
+
+          //console.log(datastack);
+          google.charts.load('current', {packages:['corechart','bar']});
+          google.charts.setOnLoadCallback(drawiStack);
+
+          function drawiStack() {
+            var data = new google.visualization.arrayToDataTable(datastack);
+            var options = {
+              isStacked: 'percent',
+              height: 200,
+              colors: ['#1E4B77', '#225688', '#266099', '#2A6BAA', '#2E75BA', '#4181C0', '#548EC6', '#679ACC', '#7AA7D3', '#8DB3D9'],
+              legend: {position: 'none', maxLines: 3},
+              hAxis: { textPosition: 'none' },
+            };
+          
+            var chart = new google.visualization.BarChart(document.getElementById('iStack'));
+            chart.draw(data, options);
+
+          }
+
+    }
+
+    //___________________________________________________________________________________________________________________
+
+
+      function drawCircleOnMap(){
+          datacsv2.forEach(function(row){
+              var marker = L.circleMarker([row['latitude'],row['longitude']],{
+                radius: cluster(row['reached_30Mar']),
+                weight:0.7,
+                color:'white',
+                fillColor:'#1E4B77',
+                fillOpacity: 0.6
+              }).addTo(map).bindPopup('<b>'+row['reached_30Mar']+'</b>');
+          })
+      }
+
+
+      function callPolygon(ourpolygon){
+          // get color depending on population density value
+          function getColor(d) {
+            return d > 80000  ? '#C2524B' :
+                d > 40000     ? '#EC645B' :
+                d > 25000     ? '#EF8078' :
+                d > 10000     ? '#F29C96' :
+                d > 3000      ? '#F6B8B4' :
+                              'transparent';
+          }
+          //console.log(ourpolygon)
+
+          function style(feature){
+            return {
+              weight: 0.7,
+              opacity: 1,
+              color: 'white',
+              dashArray: '1',
+              fillOpacity: 0.7,
+              fillColor: getColor(parseInt(reachedData[feature.properties.District]))
+            };
+          }
+
+          function highlightFeature(e) {
+            var layer = e.target;
+
+            layer.setStyle({
+              weight: 5,
+              color: '#666',
+              dashArray: '',
+              fillOpacity: 0.7
+            });
+
+            // if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+            //   layer.bringToFront();
+            // }
+
+          }
+
+          var geojson;
+
+          function resetHighlight(e) {
+            geojson.resetStyle(e.target);
+          }
+
+          function onEachFeature(feature, layer) {
+            layer.on({
+              mouseover: highlightFeature,
+              mouseout: resetHighlight
+            });
+          }
+
+          geojson = L.geoJson(ourpolygon, {
+            style: style,
+            onEachFeature: onEachFeature
+          }).addTo(map);
+      }
+
+
+      function callDataInit(){
+        d3.csv('data/data1.csv',function(data){
+              datacsv1 = data;
+              d3.csv('data/data2.csv',function(data){
+                    datacsv2 = data;
+                    putKeyFigure();
+                    d3.json('mwi_admbnda_adm2_nso_20181016.geojson',function(data){
+                        callPolygon(data);
+                        drawCircleOnMap();
+                        draw_BarChart();
+                        draw_StackChart();
+                    })
+              })
+        })
+
+      }
+
+      callDataInit();
+
+   </script>
+
+  </body>
+
+</html>
