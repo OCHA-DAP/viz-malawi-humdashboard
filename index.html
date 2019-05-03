@@ -173,7 +173,7 @@
       });
       var humanNumber = d3.format(',d');
       var cluster = d3.scale.linear()
-          .domain([4000, 80000])
+          .domain([1, 24])
           .range([2, 30]);
 
       CartoDB_Positron.addTo(map);
@@ -266,12 +266,12 @@
       function drawCircleOnMap(){
           datacsv2.forEach(function(row){
               var marker = L.circleMarker([row['latitude'],row['longitude']],{
-                radius: cluster(row['reached_30Mar']),
+                radius: cluster(row['#ofPartners']),
                 weight:0.7,
                 color:'white',
                 fillColor:'#1E4B77',
                 fillOpacity: 0.6
-              }).addTo(map).bindPopup('<b>'+row['reached_30Mar']+'</b>');
+              }).addTo(map).bindPopup(row['District']+' : <b>'+row['#ofPartners']+'</b>');
           })
       }
 
