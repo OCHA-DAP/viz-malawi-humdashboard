@@ -20,6 +20,13 @@ h1,h2,h3,h4,h5{
 	color: #212121;
 
 }
+#imglegend{
+  position: absolute;
+  z-index: 999;
+  width: 5rem;
+  bottom: 1rem;
+  left: 1rem;
+}
 #maincontainer{
 	margin-top: 0px;
 	padding: 0px 30px;
