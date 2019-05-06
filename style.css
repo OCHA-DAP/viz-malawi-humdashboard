@@ -24,8 +24,8 @@ h1,h2,h3,h4,h5{
   position: absolute;
   z-index: 999;
   width: 5rem;
-  bottom: 1rem;
-  left: 1rem;
+  bottom: 2rem;
+  left: 2rem;
 }
 #maincontainer{
 	margin-top: 0px;
