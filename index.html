@@ -274,6 +274,7 @@
 
       function drawCircleOnMap(){
           datacsv2.forEach(function(row){
+              //var humanNumber = d3.format(',d');
               var marker = L.circleMarker([row['latitude'],row['longitude']],{
                 radius: cluster(row['#ofPartners']),
                 weight:0.7,
@@ -345,9 +346,9 @@
 
 
       function callDataInit(){
-        d3.csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vTrkJktEE4jG_JGQAN3kXIjabRHhJ_19tNOf1P_zZhB0K9GLG5iIenCMe9ziJQG38L2sXfq76gg1Eof/pub?output=csv',function(data){
+        d3.csv('./data/Dashboard_cluster_data1.csv',function(data){
               datacsv1 = data;
-              d3.csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vRKdCbr_w2qzYLEMCFzfTcAEhj7HtYzw0LBgNNsyxA38j4ho1W6sexhzvVk3mJTOhnIjvhv8kZNhChA/pub?output=csv',function(data){
+              d3.csv('./data/Dashboard_district_data2.csv',function(data){
                     datacsv2 = data;
                     putKeyFigure();
                     d3.json('mwi_admbnda_adm2_nso_20181016.geojson',function(data){
